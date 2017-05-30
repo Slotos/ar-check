@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CheckTest < Minitest::Test
+class PGConstraintTest < Minitest::Test
   include TestHelper
 
   setup do

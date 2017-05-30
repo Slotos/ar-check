@@ -1,19 +1,21 @@
-# AR::Check
+# AR::PGConstraint
 
-[![Travis-CI](https://travis-ci.org/fnando/ar-check.png)](https://travis-ci.org/fnando/ar-check)
-[![Code Climate](https://codeclimate.com/github/fnando/ar-check/badges/gpa.svg)](https://codeclimate.com/github/fnando/ar-check)
-[![Test Coverage](https://codeclimate.com/github/fnando/ar-check/badges/coverage.svg)](https://codeclimate.com/github/fnando/ar-check/coverage)
-[![Gem](https://img.shields.io/gem/v/ar-check.svg)](https://rubygems.org/gems/ar-check)
-[![Gem](https://img.shields.io/gem/dt/ar-check.svg)](https://rubygems.org/gems/ar-check)
+[![Travis-CI](https://travis-ci.org/Slotos/ar-pgconstraint.png)](https://travis-ci.org/Slotos/ar-pgconstraint)
+[![Code Climate](https://codeclimate.com/github/Slotos/ar-pgconstraint/badges/gpa.svg)](https://codeclimate.com/github/Slotos/ar-pgconstraint)
+[![Test Coverage](https://codeclimate.com/github/Slotos/ar-pgconstraint/badges/coverage.svg)](https://codeclimate.com/github/Slotos/ar-pgconstraint/coverage)
+<!--[![Gem](https://img.shields.io/gem/v/ar-pgconstraint.svg)](https://rubygems.org/gems/ar-pgconstraint)
+[![Gem](https://img.shields.io/gem/dt/ar-pgconstraint.svg)](https://rubygems.org/gems/ar-pgconstraint)-->
 
-Enable PostgreSQL's CHECK constraints on ActiveRecord migrations.
+Enable PostgreSQL's CHECK and EXCLUDE constraints on ActiveRecord migrations.
+
+This is a work in progress, gem will be published once EXCLUDE constraint is implemented and additional tests are added.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "ar-check"
+gem "ar-pgconstraint"
 ```
 
 And then execute:
@@ -22,7 +24,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install ar-check
+    $ gem install ar-pgconstraint
 
 ## Usage
 
@@ -58,7 +60,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/fnando/ar-check. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/Slotos/ar-pgconstraint.
 
 
 ## License

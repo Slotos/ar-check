@@ -1,16 +1,23 @@
+addons:
+  code_climate:
+    repo_token:
+      secure: "oAB9RdC2ie8n1dHS0ZGufSjAuTHOkPaxQIgZ5c59uTO0XWYxsMS8atw1DdibS/duSM0pzf/ByHpx0qGKUn2DJIE/fCtlVaddICOgH5i2v8q9Zbn0EFiEaTZxzdyhKoENIdcs5iKrOr2g+kntaaGTbl/f1+eKWON+nbTqc2tuqvOG21tG7q0Fwrx2zE8QUDJXucGaTzbC6eeCbQ0nJ4KVGkcJBU4Ce8y7kY6dNS30x77zdB1IKvw4vTUDQLgkWV91PfNDnME2ghM45me77JFaOWBSQ6JSbr1kbGrDf0Ega6GT04k+c06QeTX7EdBeBkpwExR2XYTpkAx6ZlbXErcrI3UynyjusbUWovBwcJDHCE7vZelF/+TsmRIpd0Gh0jiT4Rv51P9VU9k6LC+gbcPsPnJgd05sJmFrcDLh/lZt4g3Dc3TRFOVP6Y2Z8OSbmRSWaByM5QV7BVDcX37dwYWBcVlOhxcCIORnf2tlZ4zcKFUNbgbEAthfQAXBXsW2rsBnqf3DwmviwAgGBzmSozyCw0NbUxDKUG+9wPzyAyjqYOX00s2vqGkeb+q4SoDy40reyJk0xRIIZYDtrzBBF+BRLX0xh3FG3PcySFYzyWS6uk95nl0UUvK3E3z+RzLdlk05K6Gvz2ua2/YOW86LXOlJQkZEHvFCb0KTqHkmdIvyG7Y="
 language: ruby
 sudo: false
 cache: bundler
 before_install:
 - gem install bundler
 before_script:
-- createdb test
+- createdb pgconstraint-test
 rvm:
-- '2.3.0'
-- '2.2'
-- '2.1'
+- 2.4.0
+- 2.3.0
+- 2.2.2
 notifications:
   email: false
-env:
-  global:
-    secure: OvcOmU3tTrRrgXAAZpZVMbgwtxL7NtF35hf1sBhR8K+x1zZvcJkO1ADc60zzcXsMSIfavsD6uUPE0V92OJ+AgJPJq85skXr0UaYWmCDsEcnCqCl3HQYph1d6ntzZ2ZVC7Oz/nwuk2oaTL02wXuh/2XsztvDSTHWsNAWye787u4mPU4n4YXggsSCIU6zHSz5orfkKR4DkXT7jhrVP6lIn+an+j4RyZJ2Y7HE32vtV93bq1bdSiyJNs0fOY6iGpPRoD86mO2dRSdpQPPI4y0ArnPH6dFiWTIy94xWNyb64vvzDCqsJdj1A/4h13AUNqK5rG8nuWllWCe455o17fTPJchqM71ImjrOyeHFPkGvkID2UL0tgIApNl3bBdANWDITXLeJiAtDHIlFcisxda2qJs3pe4YM+UkspInofHvO80YFT4/IBfYB1bbWwcP8+bisvpUoStjZXO7VPAilxVC+RimGK1vp74WLHm1LQGkINpeEhFyhAxYyuOGHhTLlfquVAhQbCy6bV78NHeoxpTBjt6u0ZpBlDe9yJXO0NsRqyhCSKf+4LNpafROpxCU4BvT4WYi7QM3cJgO7Mlia67YzVrl3IYKkOctvcfj3pdlxTWlcd0RzEBj8Xicq+3tCgJ1mkMqExIylXQwYGflP77ErCw4hcC6wsWYhBl/wQMC/+VWE=
+gemfile:
+- gemfiles/activerecord_4.2.8.gemfile
+- gemfiles/activerecord_5.0.3.gemfile
+- gemfiles/activerecord_5.1.1.gemfile
+after_success:
+  - bundle exec codeclimate-test-reporter

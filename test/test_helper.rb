@@ -1,12 +1,13 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+require 'bundler/setup'
 
-require "bundler/setup"
-require "ar/check"
-require "minitest/utils"
-require "minitest/autorun"
+require 'simplecov'
+SimpleCov.start
 
-ActiveRecord::Base.establish_connection "postgres:///test"
+require 'ar/pgconstraint'
+require 'minitest/utils'
+require 'minitest/autorun'
+
+ActiveRecord::Base.establish_connection 'postgres:///pgconstraint-test'
 ActiveRecord::Migration.verbose = false
 
 class Thing < ActiveRecord::Base
@@ -24,7 +25,13 @@ module TestHelper
     end
   end
 
-  def with_migration(&block)
-    Class.new(ActiveRecord::Migration, &block).new
+  if Gem::Version.create(ActiveRecord::VERSION::STRING) < Gem::Version.create('5.0.0')
+    def with_migration(&block)
+      Class.new(ActiveRecord::Migration, &block).new
+    end
+  else
+    def with_migration(&block)
+      Class.new(ActiveRecord::Migration[5.0], &block).new
+    end
   end
 end
